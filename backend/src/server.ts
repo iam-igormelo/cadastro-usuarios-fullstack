@@ -11,7 +11,12 @@ app.setErrorHandler((error, request, reply)=> {
 
 const start = async()=> {
 
-    await app.register(cors)
+    await app.register(cors, {
+        origin: 'http://localhost:5173',
+        methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+        credentials: true
+    })
+    
     await app.register(routes)
 
     try {
